@@ -7,3 +7,12 @@ document.querySelector('#saveTokenForm').addEventListener('submit', (e) => {
 
   chrome.runtime.reload();
 });
+
+document.querySelector('#saveTokenInput').addEventListener('input', (e) => {
+  const inputValue = e.target.value;
+
+  const isValid = /.{20,}/g.test(inputValue);
+
+  const button = document.querySelector('input[type="submit"]');
+  button.disabled = !isValid;
+});
