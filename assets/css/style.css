@@ -1,0 +1,21 @@
+body {
+    width: 120px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    padding: 5px;
+}
+
+input::placeholder {
+    text-align: center;
+}
+
+form input[type="submit"] {
+    margin-top: 5px;
+}
+
+
