@@ -9,7 +9,7 @@
   "permissions": ["storage"],
   "background": {
     "scripts": ["dist/js/background.bundle.js"],
-    "persistent": false,
+    "persistent": true,
     "type": "module"
   },
   "browser_action": {
