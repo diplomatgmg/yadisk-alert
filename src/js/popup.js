@@ -1,18 +1,45 @@
-document.querySelector('#saveTokenForm').addEventListener('submit', (e) => {
-  e.preventDefault();
-  const token = new FormData(e.target).get('token');
-  chrome.storage.local.set({ accessToken: token }, () => {
-    console.log('Токен сохранен:', token);
+import YaDisk from './YaDisk.js';
+
+document.addEventListener('DOMContentLoaded', async () => {
+  const saveTokenForm = document.querySelector('#saveTokenForm');
+  const saveTokenInput = document.querySelector('#saveTokenInput');
+  const saveButton = saveTokenForm.querySelector('input[type="submit"]');
+  const displayTokenInfo = (token, isValid) => {
+    const infoElement = document.createElement('p');
+
+    if (isValid) {
+      infoElement.textContent = 'Токен успешно добавлен!';
+      infoElement.classList.add('success');
+      saveTokenInput.outerHTML = `<p>${token.slice(0, 10)}****</p>`;
+      saveButton.disabled = true;
+    } else {
+      infoElement.textContent = 'Неверный токен!';
+      infoElement.classList.add('error');
+    }
+
+    saveTokenForm.appendChild(infoElement);
+  };
+
+  const validateAndDisplayToken = async () => {
+    const token = saveTokenInput.value;
+    const isValidToken = await YaDisk.isValidToken(token);
+
+    displayTokenInfo(token, isValidToken);
+
+    if (isValidToken) {
+      await YaDisk.setToken(token);
+    }
+  };
+
+  saveTokenForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    await validateAndDisplayToken();
   });
 
-  chrome.runtime.reload();
-});
+  const initialToken = await YaDisk.getToken();
 
-document.querySelector('#saveTokenInput').addEventListener('input', (e) => {
-  const inputValue = e.target.value;
-
-  const isValid = /.{20,}/g.test(inputValue);
-
-  const button = document.querySelector('input[type="submit"]');
-  button.disabled = !isValid;
+  if (initialToken !== null) {
+    const initialIsValidToken = await YaDisk.isValidToken(initialToken);
+    displayTokenInfo(initialToken, initialIsValidToken);
+  }
 });

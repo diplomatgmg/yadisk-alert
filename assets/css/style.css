@@ -1,11 +1,17 @@
 body {
-    width: 120px;
+    width: 150px;
+}
+
+input, p {
+    margin: 0;
+    padding: 0;
 }
 
 form {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    text-align: center;
 
     padding: 5px;
 }
@@ -14,8 +20,18 @@ input::placeholder {
     text-align: center;
 }
 
-form input[type="submit"] {
-    margin-top: 5px;
+form > * {
+    margin-bottom: 7px;
 }
 
+form input[type="submit"] {
+    margin-bottom: 3px;
+}
 
+.success {
+    color: green;
+}
+
+.error {
+    color: red;
+}

@@ -29,11 +29,10 @@ export default class YaDiskAlert {
 
     const difference = loadedVideos.filter((element) => !this.loadedData.includes(element));
 
-    difference.forEach((video) => {
-      console.log(`Появилось новое видео - ${video}`);
+    if (difference.length > 0) {
       this.loadedData = [...this.loadedData, ...difference];
-      this.playSound();
-    });
+      await this.playSound();
+    }
   }
 
   async polling() {
@@ -41,6 +40,6 @@ export default class YaDiskAlert {
       this.loadedData = await this.getLoadedVideos();
     }
 
-    setInterval(this.checkForNewVideos.bind(this), 1000);
+    setInterval(this.checkForNewVideos.bind(this), 30000);
   }
 }
