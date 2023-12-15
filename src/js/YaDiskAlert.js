@@ -31,6 +31,8 @@ export default class YaDiskAlert {
     const difference = loadedVideos.filter((element) => !this.loadedData.includes(element));
 
     if (difference.length > 0) {
+      console.info('Найден новый файл');
+      console.info(difference);
       this.loadedData = [...this.loadedData, ...difference];
       await this.playSound();
     }
@@ -44,6 +46,7 @@ export default class YaDiskAlert {
   async polling() {
     // noinspection InfiniteLoopJS
     while (true) { // eslint-disable-line no-constant-condition
+      console.info('Ожидание новых файлов...');
       if (!this.loadedData) {
         this.loadedData = await this.getLoadedVideos(); // eslint-disable-line no-await-in-loop
       }
