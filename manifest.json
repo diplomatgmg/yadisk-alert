@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "YaDisk Alert",
-  "version": "1.1",
+  "version": "1.2",
   "description": "Звуковые уведомления при загрузке новых видео на Яндекс Диск",
   "icons": {
     "48": "assets/images/logo.png"
