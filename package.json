@@ -5,7 +5,7 @@
   "main": "src/js/background.js",
   "type": "module",
   "scripts": {
-    "build": "webpack"
+    "build": "webpack && eslint dist --fix"
   },
   "author": "",
   "license": "ISC",
