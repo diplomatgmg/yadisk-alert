@@ -18,7 +18,10 @@ export default class YaDiskAlert {
       },
     });
     const data = await response.json();
-    return data.items.map(({ name }) => name);
+
+    return data.items
+      .filter(({ path }) => /^disk:\/ВИДЕО ДЛЯ РАБОТЫ\/[^/]+$/.test(path))
+      .map(({ name }) => name);
   }
 
   async playSound() {
