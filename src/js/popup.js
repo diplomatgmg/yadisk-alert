@@ -3,14 +3,14 @@ import YaDisk from './YaDisk.js';
 document.addEventListener('DOMContentLoaded', async () => {
   const saveTokenForm = document.querySelector('#saveTokenForm');
   const saveTokenInput = document.querySelector('#saveTokenInput');
-  const saveButton = saveTokenForm.querySelector('input[type="submit"]');
+  const saveButton = saveTokenForm.querySelector('button[type="submit"]');
   const displayTokenInfo = (token, isValid) => {
     const infoElement = document.createElement('p');
 
     if (isValid) {
       infoElement.textContent = 'Токен успешно добавлен!';
       infoElement.classList.add('success');
-      saveTokenInput.outerHTML = `<p>${token.slice(0, 10)}****</p>`;
+      saveTokenInput.outerHTML = `<p>${token.slice(0, 15)}********</p>`;
       saveButton.disabled = true;
     } else {
       infoElement.textContent = 'Неверный токен!';

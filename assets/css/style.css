@@ -1,37 +1,74 @@
 body {
-    width: 150px;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    width: 250px;
+    margin: 0 auto;
+    box-sizing: border-box;
 }
 
-input, p {
-    margin: 0;
-    padding: 0;
+.form-container {
+    background-color: #fff;
+    margin: 15px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-form {
+.form-container:nth-child(2n) {
+    margin-top: 15px;
+}
+
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type="password"]:focus {
+    outline: none;
+    border-color: #4caf50;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+select, button {
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+.range-time > * {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-
-    padding: 5px;
+    justify-content: space-between;
+    align-items: center;
 }
 
-input::placeholder {
-    text-align: center;
-}
 
-form > * {
-    margin-bottom: 7px;
-}
-
-form input[type="submit"] {
-    margin-bottom: 3px;
+.error {
+    padding-top: 15px;
+    margin: 0;
+    color: red;
 }
 
 .success {
+    padding-top: 15px;
+    margin: 0;
     color: green;
-}
-
-.error {
-    color: red;
 }

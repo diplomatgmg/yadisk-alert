@@ -6,11 +6,39 @@
     <link rel="stylesheet" href="../../assets/css/style.css">
 </head>
 <body>
-<form id="saveTokenForm" >
-    <label for="saveTokenInput"></label>
-    <input name="token" id="saveTokenInput" type="password" placeholder="Введите токен">
-    <input type="submit" value="Сохранить">
+<form id="saveTokenForm" class="form-container">
+    <label for="saveTokenInput">
+        <input name="token" id="saveTokenInput" type="password" placeholder="Введите токен">
+    </label>
+    <hr>
+    <button type="submit">Сохранить</button>
 </form>
+
+<form class="form-container">
+    <label><strong>Выбери дни недели:</strong></label>
+    <label><input type="checkbox" name="days" value="monday"> Понедельник</label>
+    <label><input type="checkbox" name="days" value="tuesday"> Вторник</label>
+    <label><input type="checkbox" name="days" value="wednesday"> Среда</label>
+    <label><input type="checkbox" name="days" value="thursday"> Четверг</label>
+    <label><input type="checkbox" name="days" value="friday"> Пятница</label>
+    <label><input type="checkbox" name="days" value="saturday"> Суббота</label>
+    <label><input type="checkbox" name="days" value="sunday"> Воскресенье</label>
+
+    <div class="range-time">
+        <label>
+            С
+            <input type="time" name="time" min="00:00" max="23:59">
+        </label>
+        <label>
+            До
+            <input type="time" name="time" min="00:00" max="23:59">
+        </label>
+    </div>
+
+    <hr>
+    <button>Сохранить</button>
+</form>
+
 <script src="../js/popup.js" type="module"></script>
 </body>
 </html>
